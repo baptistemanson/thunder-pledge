@@ -3,7 +3,7 @@ import cover from "./cover.jpg";
 function Cover() {
   return (
     <div style={{}}>
-      <img src={cover} />
+      <img alt="cover" src={cover} />
     </div>
   );
 }

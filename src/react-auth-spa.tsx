@@ -6,7 +6,7 @@ const DEFAULT_REDIRECT_CALLBACK = () =>
 
 export const Auth0Context = React.createContext({});
 export const useAuth0 = () => useContext(Auth0Context);
-export const Auth0Provider = ({
+export default ({
   children,
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
   ...initOptions
@@ -73,11 +73,11 @@ export const Auth0Provider = ({
         popupOpen,
         loginWithPopup,
         handleRedirectCallback,
-        getIdTokenClaims: (p: any) => auth0Client.getIdTokenClaims(...p),
-        loginWithRedirect: (p: any) => auth0Client.loginWithRedirect(...p),
-        getTokenSilently: (p: any) => auth0Client.getTokenSilently(...p),
-        getTokenWithPopup: (p: any) => auth0Client.getTokenWithPopup(...p),
-        logout: (p: any) => auth0Client.logout(...p)
+        getIdTokenClaims: (...p: any) => auth0Client.getIdTokenClaims(...p),
+        loginWithRedirect: (...p: any) => auth0Client.loginWithRedirect(...p),
+        getTokenSilently: (...p: any) => auth0Client.getTokenSilently(...p),
+        getTokenWithPopup: (...p: any) => auth0Client.getTokenWithPopup(...p),
+        logout: (...p: any) => auth0Client.logout(...p)
       }}
     >
       {children}

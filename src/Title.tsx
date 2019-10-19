@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import SideBar from "./SideBar";
 
 function Title() {
   return (
@@ -15,6 +16,7 @@ function Title() {
       }}
     >
       <div style={{ textAlign: "center" }}>Thunder Pledge</div>
+      <SideBar />
     </div>
   );
 }

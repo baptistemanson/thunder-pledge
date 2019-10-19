@@ -23,7 +23,8 @@ function PledgePanel() {
             "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))",
           bottom: 35,
           left: 0,
-          width: "100%"
+          width: "100%",
+          zIndex: 1
         }}
       ></div>
       <div
@@ -34,7 +35,8 @@ function PledgePanel() {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "white",
-          width: "100%"
+          width: "100%",
+          zIndex: 1
         }}
       >
         <div
@@ -43,7 +45,8 @@ function PledgePanel() {
             width: 100,
             textAlign: "center",
             height: "35px",
-            backgroundColor: "#B8E986"
+            backgroundColor: "#B8E986",
+            zIndex: 1
           }}
         >
           Pledge

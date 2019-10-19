@@ -15,7 +15,9 @@ function Title() {
         boxShadow: "0 2px 4px 0 rgba(0,0,0,0.50)"
       }}
     >
-      <div style={{ textAlign: "center" }}>Thunder Pledge</div>
+      <div style={{ textAlign: "center" }}>
+        <h2>Thunder Pledge</h2>
+      </div>
       <SideBar />
     </div>
   );

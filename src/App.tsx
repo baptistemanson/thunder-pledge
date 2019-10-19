@@ -8,6 +8,12 @@ import Auth0Provider from "./react-auth-spa";
 
 import config from "./auth_config.json";
 
+import { Provider, createClient } from "urql";
+
+const client = createClient({
+  url: "https://thunder-pledge.herokuapp.com/v1/graphql"
+});
+
 // A function that routes the user to the right place
 // after login
 const onRedirectCallback = (appState: any) => {
@@ -27,11 +33,13 @@ export default () => (
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
   >
-    <Router>
-      <ProjectPage path="/" />
-      <AboutPage path="/about" />
-      <ContactPage path="/contact" />
-      <LogoutPage path="/logout" />
-    </Router>
+    <Provider value={client}>
+      <Router>
+        <ProjectPage path="/" />
+        <AboutPage path="/about" />
+        <ContactPage path="/contact" />
+        <LogoutPage path="/logout" />
+      </Router>
+    </Provider>
   </Auth0Provider>
 );

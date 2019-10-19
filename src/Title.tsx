@@ -1,6 +1,6 @@
 import * as React from "react";
 import SideBar from "./SideBar";
-
+import imgSrc from "./logo.png";
 function Title() {
   return (
     <div
@@ -16,7 +16,7 @@ function Title() {
       }}
     >
       <div style={{ textAlign: "center" }}>
-        <h2>Thunder Pledge</h2>
+        <img alt="logo" src={imgSrc} style={{ width: 180 }} />
       </div>
       <SideBar />
     </div>

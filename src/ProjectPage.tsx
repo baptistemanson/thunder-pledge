@@ -5,7 +5,7 @@ import Title from "./Title";
 import Cover from "./Cover";
 import Description from "./Description";
 import PledgePanel from "./PledgePanel";
-import { RouteComponentProps } from "@reach/router";
+// import { RouteComponentProps } from "@reach/router";
 
 import { Query } from "urql";
 
@@ -28,9 +28,7 @@ const extractPledgesNumber = (data: any) =>
 const extractPledgesTarget = (data: any) =>
   _.get(data, "project_by_pk.pledges_target");
 
-function ProjectPage(props: RouteComponentProps) {
-  const projectId = 1;
-
+function ProjectPage(props: any) {
   return (
     <Query query={getProject}>
       {({ fetching, data, error, extensions }) => (
@@ -50,7 +48,7 @@ function ProjectPage(props: RouteComponentProps) {
               pledgesNumber={extractPledgesNumber(data) | 0}
               pledgesTarget={extractPledgesTarget(data) | 0}
             />
-            <PledgePanel projectId={1} />
+            <PledgePanel projectId={props.projectId} />
           </div>
         </>
       )}

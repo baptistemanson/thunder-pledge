@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { navigate } from "@reach/router";
+import { Mutation } from "urql";
+import { Auth0Context } from "./react-auth-spa";
+const mutation = `
+mutation insertPledge($objects: [pledge_insert_input!]!) {
+  __typename
+  insert_pledge(objects: $objects, on_conflict: {constraint: pledge_user_project_key, update_columns: project}) {
+    returning {
+      id
+    }
+  }
+}`;
 
-function PledgePanel() {
+function PledgePanel(props: any) {
+  const context = useContext(Auth0Context);
+  const [errors, setErrors] = useState(null) as any;
+  if (errors) {
+    return <div>{JSON.stringify(errors)}</div>;
+  }
+
   return (
     <div
       style={{
@@ -40,6 +58,17 @@ function PledgePanel() {
         }}
       >
         <div
+          onClick={async () => {
+            try {
+              await props.pledge({
+                objects: [{ project: props.projectId, user: context.user.id }]
+              });
+              navigate("/done");
+            } catch (e) {
+              console.log(e);
+              setErrors(e);
+            }
+          }}
           style={{
             cursor: "pointer",
             width: 100,
@@ -56,4 +85,11 @@ function PledgePanel() {
   );
 }
 
-export default PledgePanel;
+const WithMutation = (props: any) => (
+  <Mutation query={mutation}>
+    {({ executeMutation }) => (
+      <PledgePanel projectId={props.projectId} pledge={executeMutation} />
+    )}
+  </Mutation>
+);
+export default WithMutation;

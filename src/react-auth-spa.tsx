@@ -4,7 +4,10 @@ import createAuth0Client from "@auth0/auth0-spa-js";
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
-export const Auth0Context = React.createContext({});
+export const Auth0Context = React.createContext({
+  user: {}
+} as any);
+
 export const useAuth0 = (): any => useContext(Auth0Context);
 export default ({
   children,
@@ -52,6 +55,7 @@ export default ({
       setPopupOpen(false);
     }
     const user = await auth0Client.getUser();
+
     setUser(user);
     setIsAuthenticated(true);
   };
@@ -62,6 +66,7 @@ export default ({
     const user = await auth0Client.getUser();
     setLoading(false);
     setIsAuthenticated(true);
+
     setUser(user);
   };
   return (
@@ -77,7 +82,8 @@ export default ({
         loginWithRedirect: (...p: any) => auth0Client.loginWithRedirect(...p),
         getTokenSilently: (...p: any) => auth0Client.getTokenSilently(...p),
         getTokenWithPopup: (...p: any) => auth0Client.getTokenWithPopup(...p),
-        logout: (...p: any) => auth0Client.logout(...p)
+        logout: (...p: any) => auth0Client.logout(...p),
+        updateUser: (id: number) => setUser({ ...user, id })
       }}
     >
       {children}

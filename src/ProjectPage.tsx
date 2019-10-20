@@ -29,6 +29,8 @@ const extractPledgesTarget = (data: any) =>
   _.get(data, "project_by_pk.pledges_target");
 
 function ProjectPage(props: RouteComponentProps) {
+  const projectId = 1;
+
   return (
     <Query query={getProject}>
       {({ fetching, data, error, extensions }) => (
@@ -48,7 +50,7 @@ function ProjectPage(props: RouteComponentProps) {
               pledgesNumber={extractPledgesNumber(data) | 0}
               pledgesTarget={extractPledgesTarget(data) | 0}
             />
-            <PledgePanel />
+            <PledgePanel projectId={1} />
           </div>
         </>
       )}

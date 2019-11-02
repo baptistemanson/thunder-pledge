@@ -1,12 +1,15 @@
 import * as React from "react";
 import Auth0Provider from "./react-auth-spa";
 import SideBar from "./modules/SideBar";
-import config from "./auth_config.json";
 import { Provider, Mutation } from "urql";
 import clientGQL from "./pages/clientGQL";
 import RouterApp from "./Router";
 import AppContext from "./AppContext";
 
+const config = {
+  domain: "thunder-pledge.auth0.com",
+  clientId: "A2qhOcbLHydOdU1MpgNRU3nB40g79dPN"
+};
 // A function that routes the user to the right place
 // after login
 const onRedirectCallback = (appState: any) => {

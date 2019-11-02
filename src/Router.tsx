@@ -2,7 +2,7 @@ import * as React from "react";
 import { Router } from "@reach/router";
 import ProjectPage from "./pages/ProjectPage";
 import ContactPage from "./pages/ContactPage";
-import AboutPage from "./AboutPage";
+import AboutPage from "./pages/AboutPage";
 import LogoutPage from "./pages/LogoutPage";
 import PledgeDonePage from "./pages/PledgeDonePage";
 import { Auth0Context } from "./react-auth-spa";

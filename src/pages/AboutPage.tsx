@@ -1,6 +1,6 @@
 import React from "react";
 
-import Title from "./modules/Title";
+import Title from "./../modules/Title";
 import { RouteComponentProps } from "@reach/router";
 function AboutPage(props: RouteComponentProps) {
   return (

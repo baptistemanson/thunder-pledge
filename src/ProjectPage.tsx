@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import _ from "lodash";
 import Title from "./Title";
 import Cover from "./Cover";
 import Description from "./Description";
@@ -13,6 +12,8 @@ const getProject = `
 query GetProject {
   project_by_pk(id: 1) {
     pledges_target
+    name
+    description
     pledges_aggregate {
       aggregate {
         count
@@ -22,36 +23,38 @@ query GetProject {
 }
 `;
 
-const extractPledgesNumber = (data: any) =>
-  _.get(data, "project_by_pk.pledges_aggregate.aggregate.count");
-
-const extractPledgesTarget = (data: any) =>
-  _.get(data, "project_by_pk.pledges_target");
-
 function ProjectPage(props: any) {
   return (
     <Query query={getProject}>
-      {({ fetching, data, error, extensions }) => (
-        <>
-          <div
-            id="page-wrap"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: "100vh",
-              zIndex: 0
-            }}
-          >
-            <Title />
-            <Cover />
-            <Description
-              pledgesNumber={extractPledgesNumber(data) | 0}
-              pledgesTarget={extractPledgesTarget(data) | 0}
-            />
-            <PledgePanel projectId={props.projectId} />
-          </div>
-        </>
-      )}
+      {({ fetching, data, error }) => {
+        if (fetching) return <div>Loading</div>;
+        if (error) return <div>Oops</div>;
+        return (
+          <>
+            <div
+              id="page-wrap"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100vh",
+                zIndex: 0
+              }}
+            >
+              <Title />
+              <Cover />
+              <Description
+                name={data.project_by_pk.name}
+                description={data.project_by_pk.description}
+                pledgesNumber={
+                  data.project_by_pk.pledges_aggregate.aggregate.count | 0
+                }
+                pledgesTarget={data.project_by_pk.pledges_target | 0}
+              />
+              <PledgePanel projectId={props.projectId} />
+            </div>
+          </>
+        );
+      }}
     </Query>
   );
 }

@@ -60,6 +60,9 @@ function PledgePanel(props: any) {
         <div
           onClick={async () => {
             try {
+              if (!context.user) {
+                context.loginWithRedirect({});
+              }
               await props.pledge({
                 objects: [{ project: props.projectId, user: context.user.id }]
               });

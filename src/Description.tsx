@@ -4,9 +4,7 @@ import ProgressBar from "./ProgressBar";
 function Description(props: any) {
   return (
     <div style={{ backgroundColor: "white", padding: 8 }}>
-      <h1 style={{ fontSize: 20, padding: "0px", margin: 8 }}>
-        Stop eating beef for climate reasons
-      </h1>
+      <h1 style={{ fontSize: 20, padding: "0px", margin: 8 }}>{props.name}</h1>
       <div>
         <ProgressBar
           progress={(props.pledgesNumber / props.pledgesTarget) * 100}
@@ -23,14 +21,7 @@ function Description(props: any) {
           marginTop: 4
         }}
       >
-        If Americans made only the dietary change to eat beans instead of beef,
-        we will would be 40-70% of the way to our carbon emission goals. This
-        only is effective if we do it en masse. Pledge to stop eating beef, but
-        only do so if 1M other people do! Join the movement! If Americans made
-        only the dietary change to eat beans instead of beef, we will would be
-        40-70% of the way to our carbon emission goals. This only is effective
-        if we do it en masse. Pledge to stop eating beef, but only do so if 1M
-        other people do! Join the movement!
+        {props.description}
       </div>
     </div>
   );

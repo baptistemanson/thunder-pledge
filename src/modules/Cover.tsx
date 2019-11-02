@@ -1,5 +1,5 @@
 import React from "react";
-import cover from "./cover.jpg";
+import cover from "./../cover.jpg";
 function Cover() {
   return (
     <div style={{}}>

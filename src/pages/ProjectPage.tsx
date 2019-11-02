@@ -1,9 +1,8 @@
 import React from "react";
-import "./App.css";
-import Title from "./Title";
-import Cover from "./Cover";
-import Description from "./Description";
-import PledgePanel from "./PledgePanel";
+import Title from "../Title";
+import Cover from "../modules/Cover";
+import Description from "../modules/Description";
+import PledgePanel from "../modules/PledgePanel";
 // import { RouteComponentProps } from "@reach/router";
 
 import { Query } from "urql";

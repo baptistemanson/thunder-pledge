@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { useAuth0 } from "./react-auth-spa";
+import { useAuth0 } from "../react-auth-spa";
 
 const Profile = () => {
   const { loading, user } = useAuth0();

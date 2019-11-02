@@ -1,8 +1,8 @@
 import React from "react";
 
-import Title from "./Title";
-import { RouteComponentProps } from "@reach/router";
-function ContactPage(props: RouteComponentProps) {
+import Title from "../Title";
+import { RouteComponentProps, Link } from "@reach/router";
+function LogoutPage(props: RouteComponentProps) {
   return (
     <>
       <div
@@ -15,10 +15,11 @@ function ContactPage(props: RouteComponentProps) {
         }}
       >
         <Title />
-        <div>Contact</div>
+        <div>You've been logged out</div>
+        <Link to="/">Go back to the homepage</Link>
       </div>
     </>
   );
 }
 
-export default ContactPage;
+export default LogoutPage;

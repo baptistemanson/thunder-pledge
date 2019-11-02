@@ -1,5 +1,4 @@
 import * as React from "react";
-import SideBar from "./SideBar";
 import imgSrc from "./logo.png";
 function Title() {
   return (
@@ -18,7 +17,6 @@ function Title() {
       <div style={{ textAlign: "center" }}>
         <img alt="logo" src={imgSrc} style={{ width: 180 }} />
       </div>
-      <SideBar />
     </div>
   );
 }

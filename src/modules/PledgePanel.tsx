@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { navigate } from "@reach/router";
 import { Mutation } from "urql";
-import { Auth0Context } from "./react-auth-spa";
+import { Auth0Context } from "../react-auth-spa";
 const mutation = `
 mutation insertPledge($objects: [pledge_insert_input!]!) {
   __typename
@@ -68,7 +68,7 @@ function PledgePanel(props: any) {
               });
               navigate("/done");
             } catch (e) {
-              console.log(e);
+              console.error(e);
               setErrors(e);
             }
           }}

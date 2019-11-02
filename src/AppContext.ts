@@ -1,3 +1,6 @@
 import { createContext } from "react";
 
-export default createContext({ isSideBarOpen: false, toggleSideBar: () => {} });
+export default createContext({
+  isPanelOpen: false,
+  setPanelOpen: (e: any) => {}
+});

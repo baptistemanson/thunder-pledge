@@ -1,6 +1,6 @@
 import React from "react";
 
-import Title from "../Title";
+import Title from "../modules/Title";
 import { RouteComponentProps, Link } from "@reach/router";
 function LogoutPage(props: RouteComponentProps) {
   return (

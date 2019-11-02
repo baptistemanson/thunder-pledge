@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "../Title";
+import Title from "../modules/Title";
 import Cover from "../modules/Cover";
 import Description from "../modules/Description";
 import PledgePanel from "../modules/PledgePanel";

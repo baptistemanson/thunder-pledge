@@ -5,6 +5,7 @@ import config from "./auth_config.json";
 import { Provider, Mutation } from "urql";
 import clientGQL from "./pages/clientGQL";
 import RouterApp from "./Router";
+import AppContext from "./AppContext";
 
 // A function that routes the user to the right place
 // after login
@@ -40,15 +41,20 @@ const WithMutations = () => (
   </Mutation>
 );
 
-export default () => (
-  <Auth0Provider
-    domain={config.domain}
-    client_id={config.clientId}
-    redirect_uri={window.location.origin}
-    onRedirectCallback={onRedirectCallback}
-  >
-    <Provider value={clientGQL}>
-      <WithMutations />
-    </Provider>
-  </Auth0Provider>
-);
+export default () => {
+  const [isPanelOpen, setPanelOpen] = React.useState(false);
+  return (
+    <Auth0Provider
+      domain={config.domain}
+      client_id={config.clientId}
+      redirect_uri={window.location.origin}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <AppContext.Provider value={{ isPanelOpen, setPanelOpen }}>
+        <Provider value={clientGQL}>
+          <WithMutations />
+        </Provider>
+      </AppContext.Provider>
+    </Auth0Provider>
+  );
+};

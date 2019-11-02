@@ -1,6 +1,9 @@
 import * as React from "react";
-import imgSrc from "./logo.png";
+import imgSrc from "./../logo.png";
+import menuSrc from "./../menu.svg";
+import AppContext from "./../AppContext";
 function Title() {
+  const appContext = React.useContext(AppContext);
   return (
     <div
       style={{
@@ -17,6 +20,12 @@ function Title() {
       <div style={{ textAlign: "center" }}>
         <img alt="logo" src={imgSrc} style={{ width: 180 }} />
       </div>
+      <img
+        alt="logo"
+        src={menuSrc}
+        style={{ width: 22, position: "absolute", right: 16, top: 16 }}
+        onClick={e => appContext.setPanelOpen(true)}
+      />
     </div>
   );
 }
